@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Redirection</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background-color: #f8f9fa;
+        color: #2c3e50;
+      }
+
+      .container {
+        text-align: center;
+        padding: 1rem;
+        width: 90%;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin-bottom: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+
+      .message {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0.8rem 0;
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        line-height: 1.5;
+        padding: 0 0.5rem;
+      }
+
+      .flag {
+        height: 20px;
+        width: 30px;
+        object-fit: fill;
+        margin-right: 0.8rem;
+        flex-shrink: 0;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0.8rem;
+        }
+
+        .message {
+          flex-direction: row;
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>URL Redirection</h1>
+
+      <div class="message">
+        <img
+          src="https://flagcdn.com/h20/gb.png"
+          class="flag"
+          alt="United Kingdom"
+        />
+        <span
+          >It seems like the URL you have entered does not exist or has
+          expired.</span
+        >
+      </div>
+
+      <div class="message">
+        <img src="https://flagcdn.com/h20/de.png" class="flag" alt="Germany" />
+        <span
+          >Es scheint, dass die eingegebene URL nicht existiert oder abgelaufen
+          ist.</span
+        >
+      </div>
+
+      <div class="message">
+        <img src="https://flagcdn.com/h20/fr.png" class="flag" alt="France" />
+        <span
+          >Il semble que l'URL que vous avez saisie n'existe pas ou a
+          expiré.</span
+        >
+      </div>
+    </div>
+  </body>
+</html>
