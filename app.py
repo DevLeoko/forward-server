@@ -12,6 +12,10 @@ load_dotenv()
 
 DATABASE_URL = "sqlite:///./redirects.db"
 API_KEY = os.getenv("API_KEY")
+ALLOWED_PREFIXES = [prefix.strip() for prefix in os.getenv(
+    "ALLOWED_PREFIXES", "all").split(",")]
+ALLOW_ALL_PREFIXES = ALLOWED_PREFIXES[0] == "all"
+
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -59,6 +63,8 @@ def authorize(authorization: Optional[str] = Header(None)):
 def create_redirect(req: CreateRequest, db: Session = Depends(get_db)):
     expires_at = int(time.time()) + \
         req.ttlSeconds if req.ttlSeconds > 0 else None
+    if not ALLOW_ALL_PREFIXES and not any(req.url.startswith(prefix) for prefix in ALLOWED_PREFIXES):
+        raise HTTPException(status_code=403, detail="Forbidden")
     redirect = db.query(Redirect).filter(Redirect.path == req.path).first()
     if redirect:
         redirect.url = req.url

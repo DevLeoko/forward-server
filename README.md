@@ -78,6 +78,7 @@ GET http://localhost:8000/example
 ## Environment Variables
 
 - `API_KEY`: Required for authentication of management endpoints
+- `ALLOWED_PREFIXES`: Comma-separated list of allowed prefixes (of URL) to be redirected to. (e.g. `https://example.com,https://example.org`) - set to `all` to allow all URLs
 
 ## Docker Image
 
